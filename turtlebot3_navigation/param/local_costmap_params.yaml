@@ -1,7 +1,7 @@
 local_costmap:
-  global_frame: odom
-  robot_base_frame: base_footprint
-
+  global_frame: map #원래 odom
+  robot_base_frame: footprint
+#local_costmap_params.yaml
   update_frequency: 10.0
   publish_frequency: 10.0
   transform_tolerance: 0.5  

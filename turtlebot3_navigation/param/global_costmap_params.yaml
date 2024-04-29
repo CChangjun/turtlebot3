@@ -1,7 +1,7 @@
 global_costmap:
   global_frame: map
-  robot_base_frame: base_footprint
-
+  robot_base_frame: footprint 
+  #global_costmap_params.yaml
   update_frequency: 10.0
   publish_frequency: 10.0
   transform_tolerance: 0.5

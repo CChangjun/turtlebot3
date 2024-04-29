@@ -1,6 +1,6 @@
 obstacle_range: 3.0
 raytrace_range: 3.5
-
+#costmap_common_params_burger.yaml
 footprint: [[-0.105, -0.105], [-0.105, 0.105], [0.041, 0.105], [0.041, -0.105]]
 #robot_radius: 0.105
 

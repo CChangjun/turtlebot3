@@ -1,5 +1,5 @@
 TrajectoryPlannerROS:
-
+#base_local_planner_params.yaml
 # Robot Configuration Parameters
   max_vel_x: 0.18
   min_vel_x: 0.08

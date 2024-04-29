@@ -1,5 +1,5 @@
 DWAPlannerROS:
-
+#dwa_local_planner_params_burger.yaml
 # Robot Configuration Parameters
   max_vel_x: 0.22
   min_vel_x: -0.22

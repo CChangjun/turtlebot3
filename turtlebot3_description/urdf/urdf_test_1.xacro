@@ -1,0 +1,383 @@
+<?xml version="1.0" ?>
+<robot name="test_robot" xmlns:xacro="http://ros.org/wiki/xacro">
+
+    <material name="black">
+        <color rgba="0.0 0.0 0.0 0.7"/>
+    </material>
+
+    <material name="orange">
+        <color rgba="0.8 0.5 0.03 1.0"/>
+    </material>
+
+    <material name="sliver">
+        <color rgba="1.0 1.0 1.0 0.4"/>
+    </material>
+
+    <material name="sliver_1">
+        <color rgba="0.9 0.8 0.7 1.0"/>
+    </material>    
+    
+    <material name="red">
+        <color rgba="1 0.0 0.0 1.0"/>
+    </material>
+
+
+
+    <link name="base_footprint"/>
+
+    <joint name="base_joint" type="fixed">
+        <parent link="base_footprint"/>
+        <child link="base_link"/>
+        <origin xyz="0.0 0.0 0.0395" rpy="0 0 0"/>
+    </joint>
+
+    <link name="base_link">
+        <visual>
+        <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+        <geometry>
+        <box size="0.3970 0.319 0.003"/>
+        </geometry>
+        <material name="black"/>
+        </visual>
+
+        <collision>
+        <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+        <geometry>
+        <box size="0.3970 0.3970 0.003"/>
+        </geometry>
+        </collision>
+        
+    </link>
+
+    <joint name="header_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="header_link"/>
+        <origin xyz="0.0 0.0 0.151" rpy="0 0 0"/>
+    </joint>
+
+    <link name="header_link">
+        <visual>
+        <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+        <geometry>
+        <box size="0.3970 0.319 0.003"/>
+        </geometry>
+        <material name="black"/>
+        </visual>
+
+        <collision>
+        <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+        <geometry>
+        <box size="0.3970 0.319 0.003"/>
+        </geometry>
+        </collision>
+    </link>
+
+    <joint name="imu_joint" type="fixed">
+        <parent link="header_link"/>
+        <child link="imu_link"/>
+        <origin xyz="0.0 0.0 0.005" rpy="0 0 0"/>
+    </joint>
+
+    <link name="imu_link">
+        <visual>
+        <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+        <geometry>
+        <box size="0.03 0.02 0.01"/>
+        </geometry>
+        <material name="red"/>
+        </visual>
+
+        <collision>
+        <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+        <geometry>
+        <box size="0.03 0.02 0.01"/>
+        </geometry>
+        </collision>
+    </link>
+
+    <joint name="wheel_left_joint" type="continuous">
+        <parent link="base_link"/>
+        <child link="wheel_left_link"/>
+        <origin xyz="0.0 -0.1505 0.023" rpy="1.57 0.0 0.0"/>
+        <axis xyz="0 0 1"/>
+    </joint>
+    
+    <link name="wheel_left_link">
+        <visual>
+        <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        <geometry>
+        <cylinder length="0.018" radius="0.0625"/>
+        </geometry>
+        <material name="orange"/>
+        </visual>
+
+        <collision>
+        <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        <geometry>
+            <cylinder length="0.018" radius="0.0625"/>
+        </geometry>
+        </collision>
+    </link>
+    
+    <joint name="wheel_right_joint" type="continuous">
+        <parent link="base_link"/>
+        <child link="wheel_right_link"/>
+        <origin xyz="0.0 0.15052 0.023" rpy="1.57 0.0 0.0"/>
+        <axis xyz="0 0 1"/>
+    </joint>
+    
+    <link name="wheel_right_link">
+        <visual>
+        <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        <geometry>
+        <cylinder length="0.018" radius="0.0625"/>
+        </geometry>
+        <material name="orange"/>
+        </visual>
+
+        <collision>
+        <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        <geometry>
+            <cylinder length="0.018" radius="0.0625"/>
+        </geometry>
+        </collision>
+    </link>
+
+    <link name="base_scan">
+        <visual>
+        <origin xyz="0.0 0.0 0.01" rpy="0.0 0.0 0.0"/>
+        <geometry>
+        <cylinder length="0.02" radius="0.0315"/>
+        </geometry>
+        <material name="sliver_1"/>
+        </visual>
+
+        <collision>
+        <origin xyz="0.0 0.0 0.01" rpy="0.0 0.0 0.0"/>
+        <geometry>
+        <cylinder length="0.02" radius="0.0315"/>
+        </geometry>
+        </collision>
+    </link>
+    
+    <joint name="ridar_joint" type="fixed">
+        <parent link="ridar_base_link"/>
+        <child link="base_scan"/>
+        <origin xyz="0.0 0.0 0.0 " rpy="0.0 0.0 0.0"/>
+        <axis xyz="0 0 1"/>
+    </joint>
+
+    <link name="suport_link_1">
+        <visual>
+        <origin xyz="0.0 0.0 0.0755" rpy="0.0 0.0 0.0"/>
+        <geometry>
+        <cylinder length="0.151" radius="0.005"/>
+        </geometry>
+        <material name="sliver"/>
+        </visual>
+
+        <collision>
+        <origin xyz="0.0 0.0 0.0755" rpy="0.0 0.0 0.0"/>
+        <geometry>
+        <cylinder length="0.151" radius="0.005"/>
+        </geometry>
+        </collision>
+    </link>
+    
+    <joint name="suport_joint_1" type="fixed">
+        <parent link="base_link"/>
+        <child link="suport_link_1"/>
+        <origin xyz="-0.19 -0.15 0.0 " rpy="0.0 0.0 0.0"/>
+    </joint>
+
+    <link name="suport_link_2">
+        <visual>
+        <origin xyz="0.0 0.0 0.0755" rpy="0.0 0.0 0.0"/>
+        <geometry>
+        <cylinder length="0.151" radius="0.005"/>
+        </geometry>
+        <material name="sliver"/>
+        </visual>
+
+        <collision>
+        <origin xyz="0.0 0.0 0.0755" rpy="0.0 0.0 0.0"/>
+        <geometry>
+        <cylinder length="0.151" radius="0.005"/>
+        </geometry>
+        </collision>
+    </link>
+    
+    <joint name="suport_joint_2" type="fixed">
+        <parent link="base_link"/>
+        <child link="suport_link_2"/>
+        <origin xyz="0.19 -0.15 0.0 " rpy="0.0 0.0 0.0"/>
+    </joint>
+
+    <link name="suport_link_3">
+        <visual>
+        <origin xyz="0.0 0.0 0.0755" rpy="0.0 0.0 0.0"/>
+        <geometry>
+        <cylinder length="0.151" radius="0.005"/>
+        </geometry>
+        <material name="sliver"/>
+        </visual>
+
+        <collision>
+        <origin xyz="0.0 0.0 0.0755" rpy="0.0 0.0 0.0"/>
+        <geometry>
+        <cylinder length="0.151" radius="0.005"/>
+        </geometry>
+        </collision>
+    </link>
+    
+    <joint name="suport_joint_3" type="fixed">
+        <parent link="base_link"/>
+        <child link="suport_link_3"/>
+        <origin xyz="-0.19 0.15 0.0 " rpy="0.0 0.0 0.0"/>
+    </joint>
+
+    <link name="suport_link_4">
+        <visual>
+        <origin xyz="0.0 0.0 0.0755" rpy="0.0 0.0 0.0"/>
+        <geometry>
+        <cylinder length="0.151" radius="0.005"/>
+        </geometry>
+        <material name="sliver"/>
+        </visual>
+
+        <collision>
+        <origin xyz="0.0 0.0 0.0755" rpy="0.0 0.0 0.0"/>
+        <geometry>
+        <cylinder length="0.151" radius="0.005"/>
+        </geometry>
+        </collision>
+    </link>
+    
+    <joint name="suport_joint_4" type="fixed">
+        <parent link="base_link"/>
+        <child link="suport_link_4"/>
+        <origin xyz="0.19 0.15 0.0 " rpy="0.0 0.0 0.0"/>
+    </joint>
+
+    <link name="ridar_base_link">
+        <visual>
+        <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        <geometry>
+        <box size="0.12 0.08 0.003"/>
+        </geometry>
+        <material name="black"/>
+        </visual>
+
+        <collision>
+        <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        <geometry>
+        <box size="0.3970 0.3970 0.003"/>
+        </geometry>
+        </collision>
+    </link>
+    
+    <joint name="ridar_base_joint" type="fixed">
+        <parent link="header_link"/>
+        <child link="ridar_base_link"/>
+        <origin xyz="0.0 0.0 0.03 " rpy="0.0 0.0 0.0"/>
+        <axis xyz="0 0 1"/>
+    </joint>
+
+    <link name="suport_link_10">
+        <visual>
+        <origin xyz="0.0 0.0 0.015" rpy="0.0 0.0 0.0"/>
+        <geometry>
+        <cylinder length="0.03" radius="0.003"/>
+        </geometry>
+        <material name="sliver"/>
+        </visual>
+
+        <collision>
+        <origin xyz="0.0 0.0 0.0755" rpy="0.0 0.0 0.0"/>
+        <geometry>
+        <cylinder length="0.151" radius="0.005"/>
+        </geometry>
+        </collision>
+    </link>
+    
+    <joint name="suport_joint_10" type="fixed">
+        <parent link="header_link"/>
+        <child link="suport_link_10"/>
+        <origin xyz="-0.055 -0.035 0.0 " rpy="0.0 0.0 0.0"/>
+        <axis xyz="0 0 1"/>
+    </joint>
+ 
+     <link name="suport_link_20">
+        <visual>
+        <origin xyz="0.0 0.0 0.015" rpy="0.0 0.0 0.0"/>
+        <geometry>
+        <cylinder length="0.03" radius="0.003"/>
+        </geometry>
+        <material name="sliver"/>
+        </visual>
+
+        <collision>
+        <origin xyz="0.0 0.0 0.0755" rpy="0.0 0.0 0.0"/>
+        <geometry>
+        <cylinder length="0.151" radius="0.005"/>
+        </geometry>
+        </collision>
+    </link>
+    
+    <joint name="suport_joint_20" type="fixed">
+        <parent link="header_link"/>
+        <child link="suport_link_20"/>
+        <origin xyz="-0.055 0.035 0.0 " rpy="0.0 0.0 0.0"/>
+        <axis xyz="0 0 1"/>
+    </joint>
+
+     <link name="suport_link_30">
+        <visual>
+        <origin xyz="0.0 0.0 0.015" rpy="0.0 0.0 0.0"/>
+        <geometry>
+        <cylinder length="0.03" radius="0.003"/>
+        </geometry>
+        <material name="sliver"/>
+        </visual>
+
+        <collision>
+        <origin xyz="0.0 0.0 0.0755" rpy="0.0 0.0 0.0"/>
+        <geometry>
+        <cylinder length="0.151" radius="0.005"/>
+        </geometry>
+        </collision>
+    </link>
+    
+    <joint name="suport_joint_30" type="fixed">
+        <parent link="header_link"/>
+        <child link="suport_link_30"/>
+        <origin xyz="0.055 -0.035 0.0 " rpy="0.0 0.0 0.0"/>
+        <axis xyz="0 0 1"/>
+    </joint>
+
+     <link name="suport_link_40">
+        <visual>
+        <origin xyz="0.0 0.0 0.015" rpy="0.0 0.0 0.0"/>
+        <geometry>
+        <cylinder length="0.03" radius="0.003"/>
+        </geometry>
+        <material name="sliver"/>
+        </visual>
+
+        <collision>
+        <origin xyz="0.0 0.0 0.0755" rpy="0.0 0.0 0.0"/>
+        <geometry>
+        <cylinder length="0.151" radius="0.005"/>
+        </geometry>
+        </collision>
+    </link>
+    
+    <joint name="suport_joint_40" type="fixed">
+        <parent link="header_link"/>
+        <child link="suport_link_40"/>
+        <origin xyz="0.055 0.035 0.0 " rpy="0.0 0.0 0.0"/>
+        <axis xyz="0 0 1"/>
+    </joint>
+
+
+</robot>
